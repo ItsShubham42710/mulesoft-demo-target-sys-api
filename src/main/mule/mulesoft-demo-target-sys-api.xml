@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<flow name="mulesoft-demo-target-sys-apiFlow" doc:id="20859b92-d299-4ef2-b65d-f82a5d5cabb8" >
+		<http:listener doc:name="Listener" doc:id="be9e82f3-e764-4f71-8721-922160ecbd0f" path="/sys" config-ref="HTTP_Listener_config"/>
+		<set-payload value='"System API"' doc:name="Set Payload" doc:id="f03cbfe3-a8da-4de7-9bb9-ec1b601c50d3" />
+		<logger level="INFO" doc:name="Logger" doc:id="7e51b89d-331e-408b-bceb-37b55ccc2f8c" message='"flow-ended"'/>
+	</flow>
+</mule>
