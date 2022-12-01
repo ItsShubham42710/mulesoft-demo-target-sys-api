@@ -1,42 +1,28 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
-	
-	<localRepository>C:\Users\shubhamsghuge\.m2\repository</localRepository>			
-	
-	<interactiveMode>true</interactiveMode>								
-	
-	<offline>false</offline>				 
-	
-	<pluginGroups>
-	
-	
-		
-	</pluginGroups>
-	
-	<proxies>
-		
-	</proxies>
-	
+	<interactiveMode>true</interactiveMode>
+	<offline>false</offline>
+	<pluginGroups/>
+	<proxies/>
 	<servers>
 		<server>
-			<id>anypoint-exchange-v3</id>
+			<id>MuleRepository</id>
+			<username>${env.nexus_username}</username>
+			<password>${env.nexus_password}</password>
+		</server>
+		<server>
+			<id>anypoint-exchange-v2</id>
 			<username>~~~Client~~~</username>
 			<password>${env.app_client_id}~?~${env.app_client_secret}</password>
 		</server>
 		<server>
-				<id>MuleRepository</id>
-				<username>${env.nexus_username}</username>
-				<password>${env.nexus_password}</password>
-		</server>	
+			<id>anypoint-exchange</id>
+			<username>~~~Client~~~</username>
+			<password>${env.app_client_id}~?~${env.app_client_secret}</password>
+		</server>
 	</servers>
-	
-	<mirrors>
-		
-	</mirrors>
-	
-	<profiles>
-		
+<mirrors/>
+<profiles>
 		<profile>
 			<id>Mule</id>
 			<activation>
@@ -55,6 +41,12 @@
 						<enabled>true</enabled>
 					</snapshots>
 				</repository>
+				 <repository>
+					 <id>mulesoft-releases</id>
+					 <name>MuleSoft Repository</name>
+					 <url>http://repository.mulesoft.org/releases/</url>
+					 <layout>default</layout>
+				 </repository>
 			</repositories>
 		</profile>
 		<profile>
@@ -70,9 +62,9 @@
 					<layout>default</layout>
 				</repository>
 				<repository>
-					<id>anypoint-exchange-v3</id>
+					<id>anypoint-exchange</id>
 					<name>Anypoint Exchange</name>
-					<url>https://maven.anypoint.mulesoft.com/api/v3/organizations/110b8aca-82b6-42f7-99c3-a6e0abac36fa/maven</url>
+					<url>https://maven.anypoint.mulesoft.com/api/v1/maven</url>
 					<layout>default</layout>
 				</repository>
 				<repository>
@@ -114,5 +106,4 @@
 			</pluginRepositories>
 		</profile>
 	</profiles>
-
 </settings>

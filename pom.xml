@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.mycompany</groupId>
+	<groupId>110b8aca-82b6-42f7-99c3-a6e0abac36fa</groupId>
 	<artifactId>mulesoft-demo-target-sys-api</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>mule-application</packaging>
@@ -10,11 +10,18 @@
 	<name>mulesoft-demo-target-sys-api</name>
 
 	<properties>
+		<orgId>110b8aca-82b6-42f7-99c3-a6e0abac36fa</orgId>
+
+		<!-- Mule Maven Plugins -->
+		<!-- <mule.maven.plugin.version>3.5.4</mule.maven.plugin.version> -->
+		<maven.clean.plugin.version>3.2.0</maven.clean.plugin.version>
+		<maven.install.plugin.version>2.5.2</maven.install.plugin.version>
+		<maven.deploy.plugin.version>2.8.2</maven.deploy.plugin.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-		<app.runtime>4.4.0-20220523</app.runtime>
-		<mule.maven.plugin.version>3.5.4</mule.maven.plugin.version>
+		<app.runtime>4.4.0-20220922</app.runtime>
+		<mule.maven.plugin.version>3.8.0</mule.maven.plugin.version>
 	</properties>
 
 	<build>
@@ -87,15 +94,27 @@
 
 	<repositories>
 		<repository>
-			<id>anypoint-exchange-v3</id>
+			<id>anypoint-exchange-v2</id>
+			<name>Anypoint Exchange V2</name>
+			<url>https://maven.anypoint.mulesoft.com/api/v2/maven</url>
+			<layout>default</layout>
+		</repository>
+		<repository>
+			<id>anypoint-exchange</id>
 			<name>Anypoint Exchange</name>
-			<url>https://maven.anypoint.mulesoft.com/api/v3/maven</url>
+			<url>https://maven.anypoint.mulesoft.com/api/v1/maven</url>
 			<layout>default</layout>
 		</repository>
 		<repository>
 			<id>mulesoft-releases</id>
 			<name>MuleSoft Releases Repository</name>
 			<url>https://repository.mulesoft.org/releases/</url>
+			<layout>default</layout>
+		</repository>
+		<repository>
+			<id>anypoint-exchange-v3</id>
+			<name>Anypoint Exchange V3</name>
+			<url>https://maven.anypoint.mulesoft.com/api/v3/maven</url>
 			<layout>default</layout>
 		</repository>
 	</repositories>
