@@ -6,7 +6,7 @@ name: mule-cicd-affirm-demo - WF
 
 #Creating global environment variables
 env:
-  org_id: 110b8aca-82b6-42f7-99c3-a6e0abac36fa
+  org_id: 84f399d8-886e-4eae-8f76-d9dbb4692a18
   projectname: mule-cicd-affirm-demo
   app_name: mule-cicd-affirm-demo
   app_runtime: '4.4.0'
@@ -14,6 +14,8 @@ env:
   worker_type: MICRO
   worker_count: '1'
   agent_enabled: 'true'
+  nexus_username: ${{ secrets.NEXUS_USERNAME }}
+  nexus_password: ${{ secrets.NEXUS_PASSWORD }}
   
 # Controls when the workflow will run
 on:
@@ -69,9 +71,20 @@ jobs:
         with:
           java-version: 1.8
           
+      - name: Build with Maven
+        run: mvn -B clean package -s ".maven/settings.xml"
+        
+      - name: Upload artifact 
+        run: mkdir staging && cp target/*.jar staging
+        
+      - uses: actions/upload-artifact@v2
+        with:
+           name: Package
+           path: staging
+          
       - name: Deploy to Cloudhub #cd $projectname
         run: |
-          mvn clean deploy -s ".maven/settings.xml" -DmuleDeploy -Dapp.runtime=$app_runtime -Denvironment=$environment 
+          mvn deploy -s ".maven/settings.xml" -DmuleDeploy -Dapp.runtime=$app_runtime -Denvironment=$environment 
 
   Publish-to-Cloudhub-Test:
     if: github.ref == 'refs/heads/Test'
