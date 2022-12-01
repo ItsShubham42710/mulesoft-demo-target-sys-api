@@ -21,7 +21,7 @@ env:
 on:
   # Triggers the workflow on push or pull request events for the given branches
   push:
-    branches: [ Dev, Test ]
+    branches: [ dev, test ]
 
 #   pull_request:
 #     branches: [ main , test , dev ]
@@ -36,8 +36,8 @@ jobs:
     runs-on: ubuntu-latest
     environment: development
     env:
-      environment: Development
-      mule_env: Development
+      environment: dev
+      mule_env: dev
       # secret_key: ${{ secrets.DEV_SECRET_KEY }}
       platform_client_secret: ${{ secrets.ANYPOINT_PLATFORM_CLIENT_SECRET }}
       platform_client_id: ${{ secrets.ANYPOINT_PLATFORM_CLIENT_ID }}
