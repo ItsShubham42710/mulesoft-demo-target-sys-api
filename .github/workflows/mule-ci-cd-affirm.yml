@@ -32,12 +32,12 @@ on:
 
 jobs:
   Publish-to-Cloudhub-Development:
-    if: github.ref == 'refs/heads/Dev'
+    if: github.ref == 'refs/heads/dev'
     runs-on: ubuntu-latest
     environment: development
     env:
-      environment: dev
-      mule_env: dev
+      environment: Dev
+      mule_env: Dev
       # secret_key: ${{ secrets.DEV_SECRET_KEY }}
       platform_client_secret: ${{ secrets.ANYPOINT_PLATFORM_CLIENT_SECRET }}
       platform_client_id: ${{ secrets.ANYPOINT_PLATFORM_CLIENT_ID }}
@@ -87,7 +87,7 @@ jobs:
           mvn deploy -s ".maven/settings.xml" -DmuleDeploy -Dapp.runtime=$app_runtime -Denvironment=$environment 
 
   Publish-to-Cloudhub-Test:
-    if: github.ref == 'refs/heads/Test'
+    if: github.ref == 'refs/heads/test'
     runs-on: ubuntu-latest
     environment: Test
     env:
